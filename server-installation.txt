@@ -1,0 +1,27 @@
+- php.ini dosyasını aç.
+
+Bul: auto_prepend_file =
+
+Değiştir: auto_prepend_file = "floodgate.php"
+
+floodgate.php dosyasını ortak include dizinine yükle (/usr/share/php gibi)
+
+/srv/www/vhosts/vhosts.conf dosyası oluştur
+
+<VirtualHost *:80>
+    <Directory /srv/www/vhosts/*>
+        AllowOverride FileInfo
+    </Directory>
+</VirtualHost>
+
+eğer mevcut vhosts.conf varsa
+
+<VirtualHost *:80>
+#bu kodlar varsa içine ekle
+    <Directory /srv/www/vhosts/*>
+        AllowOverride FileInfo
+    </Directory>
+#/bu kodlar varsa içine ekle
+</VirtualHost>
+
+Sunucuyu yeniden başlat.
